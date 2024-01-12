@@ -30,8 +30,8 @@ export class PasswordInputStrengthComponent implements ControlValueAccessor {
   public value: string | undefined;
   public showPassword: boolean = false;
 
-  private onChange: (value: string) => void = () => {};
-  private onTouched: () => void = () => {};
+  private onChange!: (value: string) => void;
+  private onTouched!: () => void;
 
   constructor(private readonly changeDetector: ChangeDetectorRef) {}
 
@@ -43,7 +43,6 @@ export class PasswordInputStrengthComponent implements ControlValueAccessor {
 
   writeValue(value: string): void {
     this.value = value;
-
     this.changeDetector.detectChanges();
   }
 

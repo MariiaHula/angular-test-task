@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PasswordInputStrengthComponent } from '../password-input-strength/password-input-strength.component';
+import { PasswordStrengthDetailsComponent } from '../password-strength-details/password-strength-details.component';
 import { PasswordStrengthService } from '../../password-strength.service';
 import { CommonModule } from '@angular/common';
 import {
@@ -11,11 +12,12 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-password',
+  selector: 'password-strength',
   standalone: true,
   imports: [
     RouterModule,
     PasswordInputStrengthComponent,
+    PasswordStrengthDetailsComponent,
     CommonModule,
     ReactiveFormsModule,
   ],
@@ -29,14 +31,11 @@ export class PasswordStrengthComponent {
     return this.passwordControl.value || '';
   }
 
-  passwordStrengthColors: string[] = ['gray', 'gray', 'gray'];
-  showPassword: boolean = false;
+  passwordStrengthColors: string[] = [];
 
-  constructor(
-    private passwordStrengthService: PasswordStrengthService = inject(
-      PasswordStrengthService
-    )
-  ) {}
+  constructor(private passwordStrengthService: PasswordStrengthService) {
+    this.checkPasswordStrength();
+  }
 
   checkPasswordStrength(): void {
     this.passwordStrengthColors =
