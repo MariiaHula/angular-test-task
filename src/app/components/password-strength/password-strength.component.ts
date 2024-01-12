@@ -23,12 +23,10 @@ import {
   styleUrls: ['./password-strength.component.scss'],
 })
 export class PasswordStrengthComponent {
-  public formGroup = new FormGroup({
-    password: new FormControl(''),
-  });
+  passwordControl = new FormControl('');
 
   get password(): string {
-    return this.formGroup.get('password')?.value || '';
+    return this.passwordControl.value || '';
   }
 
   passwordStrengthColors: string[] = ['gray', 'gray', 'gray'];
