@@ -44,8 +44,4 @@ export class PasswordStrengthComponent {
     this.passwordStrengthColors =
       this.passwordStrengthService.getPasswordStrength(this.password);
   }
-
-  togglePasswordVisibility(): void {
-    this.showPassword = !this.showPassword;
-  }
 }
