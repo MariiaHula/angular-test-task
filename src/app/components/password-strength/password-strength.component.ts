@@ -25,13 +25,12 @@ import {
   styleUrls: ['./password-strength.component.scss'],
 })
 export class PasswordStrengthComponent {
-  passwordControl = new FormControl('');
+  public passwordControl = new FormControl('');
+  public passwordStrengthColors!: string[];
 
   get password(): string {
     return this.passwordControl.value || '';
   }
-
-  passwordStrengthColors: string[] = [];
 
   constructor(private passwordStrengthService: PasswordStrengthService) {
     this.checkPasswordStrength();
